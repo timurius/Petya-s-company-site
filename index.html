@@ -69,6 +69,38 @@
 			color: white;
 			text-decoration: none;
 			font-weight: 600;
+			transition: color, 0.3s ;
+		}
+		.header__link a:hover {
+			color: #FDC411;
+		}
+		.header__link ul{
+			display: none;
+			position: absolute;
+			list-style: none;
+			padding: 0px;
+			width: auto;
+		}
+		.header__link:hover > ul{
+			display: block;
+		}
+		.header__link li{
+			border-color: #EFEFEF;
+			color: #20201F;
+			background-color: #fff;
+			padding: 16px 20px;
+			font-size: 14px;
+			cursor: default;
+			transition: background-color, 0.4s;
+		}
+		.bordered {
+			border-style: solid;
+			border-width: 0px;
+			border-bottom-width: 1px;
+		}
+		.header__link li:hover{
+			background-color: #4b4b4b;
+			color: white;
 		}
 		.header__text-block-container {
 			padding-left: 10px;
@@ -123,7 +155,17 @@
 				<div class="header__links">
 					<div class="header__link"><a href="" class="">Home</a></div>
 					<div class="header__link"><a href="" class="">About Us</a></div>
-					<div class="header__link"><a href="" class="">Services</a></div>
+					<div class="header__link">
+						<a href="" class="">Services</a>
+						<ul>
+							<li class="bordered">
+								Single Service
+							</li>
+							<li>
+								Pricing Plan
+							</li>
+						</ul>
+					</div>
 					<div class="header__link"><a href="" class="">Contact Us</a></div>
 					<div class="header__link"><a href="" class="">Pages</a></div>
 				</div>
