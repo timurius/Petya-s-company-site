@@ -6,17 +6,18 @@
 	<title>Petya`s site</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 	<style type="text/css">
 		body {
 			padding: 0px;
 			margin: 0px;
+			font-family: Barlow, sans-serif;
 		}
 		.header{
 			box-sizing: border-box;
-			background-image: url("./images/header.webp");
+			background: url("./images/header_background.png");
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: center;
@@ -24,7 +25,6 @@
 			height: 820px;
 			position: relative;
 			padding-top: 20px;
-			font-family: Barlow, sans-serif;
 		}
 		.header__menu-container {
 			width: 100%;
@@ -73,14 +73,41 @@
 		.header__link a:hover {
 			color: #FDC411;
 		}
+		.header__contact-container {
+			display: flex;
+			flex-grow: 1;
+			justify-content: right;
+		}
+		.header__contact {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			position: relative;
+			right: 0px;
+		}
 		.header__icon-container {
 			background-color: rgba(0, 0, 0, 0.4);
+			width: auto;
 		}
 		.header__icon{
 			filter: invert(77%) sepia(89%) saturate(2206%) hue-rotate(349deg) brightness(104%) contrast(98%);
-			padding: 13px;
+			padding: 10px;
 			width: 20px;
 			height: 20px;
+		}
+		.header__contact-text {
+			margin-left: 20px;
+		}
+		.header__contact-text h4{
+			margin: 0px;
+			font-size: 14px;
+			color: #fff;
+			font-weight: 500;
+		}
+		.header__contact-text h2{
+			margin: 0px;
+			color: #fff;
+			font-weight: 500;
 		}
 		.header__text-block-container {
 			padding-left: 10px;
@@ -125,6 +152,74 @@
 			background-color: #4b4b4b;
 			color: white;
 		}
+		.cars {
+			padding: 60px 0px;
+		}
+		.cars h2{
+			margin: 0px;
+		}
+		.cars p{
+			margin: 0px;
+		}
+		.cars a{
+			margin: 0px;
+			text-decoration: none;
+		}
+		.cars__text-block {
+			padding: 20px 40px;
+		}
+		.cars__title {
+			width: 100%;
+			text-align: center;
+			font-size: 48px;
+			font-weight: 800;
+			color: #20201F;
+		}
+		.cars__block {
+			width: 70%;
+			margin: auto;
+		}
+		.cars__row {
+			display: flex;
+			width: 100%;
+		}
+		.cars__item {
+			flex: auto;
+			margin: 13px;
+			width: 387px;
+			background-color: #eee;
+			box-sizing: border-box;
+		}
+		.cars__image {}
+		.cars__image img{
+			width: 100%;
+		}
+		.cars__block-title {
+			margin-bottom: 10px;
+		}
+		.cars__block-title h2{
+			font-size: 26px;
+			font-weight: 500;
+			color: #55595c;
+		}
+		.cars__text {}
+		.cars__text p{
+			font-size: 16px;
+			color: #55595c;
+			font-weight: 400;
+		}
+		.cars__link {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.cars__link a{
+			color: black;
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			padding-bottom: 2px;
+			border-bottom: 1px solid black;;
+		}
 	</style>
 	<div class="header">
 		<div class="header__menu-container">
@@ -141,15 +236,19 @@
 					<div class="header__link"><a href="" class="">Contact Us</a></div>
 					<div class="header__link"><a href="" class="">Pages</a></div>
 				</div>
-				<div class="header__contacts">
-					<div class="header__contacts-container">
+				<div class="header__language-switcher">
+					
+				</div>
+				<div class="header__contact-container">
+					<a class="header__contact" href="tel:+995591218076">
 						<div class="header__icon-container">
 							<img src="./images/icons/phone.png" alt="" class="header__icon">
 						</div>
-					</div>
-					<div class="header__contacts-container">
-						
-					</div>
+						<div class="header__contact-text">
+							<h4>Book Now</h4>
+							<h2>+995 591 218 076</h2>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -161,5 +260,110 @@
 			</div>
 		</div>
 	</div>	
+	<div class="cars">
+		<h2 class="cars__title">Машины</h2>
+		<div class="cars__block">
+			<div class="cars__row">
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cars__row">
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+				<div class="cars__item">
+					<div class="cars__image">
+						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
+					</div>
+					<div class="cars__text-block">
+						<div class="cars__block-title">
+							<h2>Заголовок</h2>
+						</div>
+						<div class="cars__text">
+							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit dolor</p>
+						</div>
+						<div class="cars__link">
+							<a href="">Подробнее</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
