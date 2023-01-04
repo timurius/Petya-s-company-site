@@ -248,6 +248,42 @@
 		.about__text {
 			text-align: left;
 		}
+		.documents {
+			box-sizing: border-box;
+			width: 50%;
+			display: flex;
+			padding: 40px;
+			align-items: center;
+			margin: auto;
+			height: 300px;
+		}
+		.documents__block {
+			width: 50%;
+			height: auto;
+			text-align: center;
+			box-sizing: content-box;
+		}
+		.documents__title h2{
+			margin: 0px;
+		}
+		.documents__dowloand-button{
+			background-color: #eee;
+			font-weight: 500;
+			padding: 14px;
+			cursor: pointer;
+			position: relative;
+			display: block;
+			width: min-content;
+		}
+		.documents__icon {margin-right: 30px}
+		.documents__content {
+			display: inline-block;
+			text-align: left;
+			width: 100px;
+		}
+		.right-border{
+			border-right: 5px gray solid ;
+		}
 	</style>
 	<div class="header">
 		<div class="header__menu-container">
@@ -437,6 +473,27 @@
 				<div class="about__text">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="documents">
+		<div class="documents__block right-border">
+			<div class="documents__title">
+				<h2>Условия</h2>
+			</div>
+			<a class="documents__dowloand-button" style="margin: auto;">
+				Смотреть
+			</a>
+		</div>
+		<div class="documents__block" style="display: flex; align-items: center; justify-content: center;">
+			<div class="documents__icon">
+				<img src="./images/icons/file.png" alt="" class="">
+			</div>
+			<div class="documents__content">
+				<div class="documents__title">
+					<h2>Договор</h2>
+				</div>
+				<a class="documents__dowloand-button">PDF</a>
 			</div>
 		</div>
 	</div>
