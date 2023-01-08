@@ -36,11 +36,19 @@
 		    opacity: 0;
 		    transition: opacity 0.3s ease-in-out;
 		}
+		.gallery__row {
+			transition: 0.3s left ease-in-out;
+			display: flex;
+			position: relative;
+			left: 0px;
+		}
 		.gallery__thumb {
 		    padding-top: 6px;
 		    display: block;
 		}  
 		.gallery__thumb > img {
+			width: 150px;
+			height: 100px;
 			filter: brightness(0.8);
 		}
 		.gallery__selector {
@@ -48,10 +56,7 @@
 		    opacity: 0;
 		    visibility: hidden;
 		}
-		.gallery__selector:checked + .gallery__img {
-		    opacity: 1;
-		}
-		.gallery__selector:checked ~ .gallery__thumb > img {
+		.gallery__selector:checked ~ .gallery__thumb img {
 	        filter: brightness(1);
 		}
 		@media screen and (min-width: 600px){
@@ -62,52 +67,83 @@
 		 
 	</style>
 	<section class="gallery">
-	  <button class="gallery__button"> < </button>
-	  <button class="gallery__button" style="right: 0px;"> > </button>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
-	    <label for="img-1" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+	  <button class="gallery__button" onclick="sliderMovement(1)"> < </button>
+	  <button class="gallery__button" style="right: 0px;" onclick="sliderMovement(-1)"> > </button>
+	  <div class="gallery__image">
+	  	<img id="big-Image-1" class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt="" style="opacity: 1;" />
+	    <img id="big-Image-2" class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
+	    <img id="big-Image-3" class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
+	    <img id="big-Image-4" class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
+	    <img id="big-Image-5" class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
+	    <img id="big-Image-6" class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
+	    <img id="big-Image-7" class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
+	    <img id="big-Image-8" class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
 	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
-	    <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
-	    <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
-	    <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
-	    <label for="img-1" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
-	    <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
-	    <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
-	  </div>
-	  <div class="gallery__item">
-	    <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
-	    <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
-	    <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+	  <div class="gallery__row" id="slider" style="left: 0px;">
+	  	<div class="gallery__item">
+	      <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
+	      <label for="img-1" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
+	      <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
+	      <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
+	      <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-5" checked name="gallery" class="gallery__selector"/>
+	      <label for="img-5" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-6" name="gallery" class="gallery__selector"/>
+	      <label for="img-6" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-7" name="gallery" class="gallery__selector"/>
+	      <label for="img-7" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+	    </div>
+	    <div class="gallery__item">
+	      <input type="radio" id="img-8" name="gallery" class="gallery__selector"/>
+	      <label for="img-8" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+	    </div>
 	  </div>
 	</section>
 	<script>
-		
-	</script>
-</div>
+		let slider = document.getElementById("slider")
+		let slidersImageWidth = 150
+    	let radios = document.querySelectorAll('input[type=radio][name="gallery"]');
+    	let oldImage = "big-Image-1";
+    	let sliderInProcess = false;
+    	radios.forEach(radio => radio.addEventListener('change', () => { 
+    		if(oldImage != null){
+    			document.getElementById(oldImage).style.opacity = "0";
+    		}
+    		let idOfImage = "big-Image-" + radio.id.substr(-1, 1)
+    		document.getElementById( idOfImage ).style.opacity = "1";
+    		oldImage = idOfImage
+    	} ));
+    	function sliderMovement(direction){
+    		if(sliderInProcess){
+    			return
+    		}
+    		sliderInProcess = true
+    		let sliderLeft = slider.style.left
+    		distance = parseInt(sliderLeft) + (slidersImageWidth * direction);
+    		if ( distance < -600 ) {
+    			distance = 0;
+    		}
+    		else if (distance > 0){
+    			distance = -600;
+    		}
+    		slider.style.left = distance + "px";
+    		setTimeout( () => sliderInProcess = false, 300);
+    	}
+    </script>
 </body>
 </html>
