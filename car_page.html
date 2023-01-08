@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		$max-img-width: 600px;
+		$max-img-height: 400px;
+		.gallery img {
+			max-width: 100%;
+		    vertical-align: top;
+		}
+		.gallery {
+		 	display: flex;
+		    margin: 10px auto;
+		    max-width: 600px;
+		    position: relative;
+		    padding-top: 400px;
+		    overflow: hidden;
+		    align-items: center;
+		}
+		.gallery__button {
+			position: absolute;
+			z-index: 3;
+			height: 30px;
+			border: none;
+			background-color: rgba(256, 256, 256, 0.7);
+		}
+		.gallery__img {
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    opacity: 0;
+		    transition: opacity 0.3s ease-in-out;
+		}
+		.gallery__thumb {
+		    padding-top: 6px;
+		    display: block;
+		}  
+		.gallery__thumb > img {
+			filter: brightness(0.8);
+		}
+		.gallery__selector {
+		    position: absolute;
+		    opacity: 0;
+		    visibility: hidden;
+		}
+		.gallery__selector:checked + .gallery__img {
+		    opacity: 1;
+		}
+		.gallery__selector:checked ~ .gallery__thumb > img {
+	        filter: brightness(1);
+		}
+		@media screen and (min-width: 600px){
+			.gallery {
+				padding-top: 400px;
+			}
+		} 
+		 
+	</style>
+	<section class="gallery">
+	  <button class="gallery__button"> < </button>
+	  <button class="gallery__button" style="right: 0px;"> > </button>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
+	    <label for="img-1" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
+	    <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
+	    <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
+	    <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
+	    <label for="img-1" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
+	    <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
+	    <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+	  </div>
+	  <div class="gallery__item">
+	    <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
+	    <img class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
+	    <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+	  </div>
+	</section>
+	<script>
+		
+	</script>
+</div>
+</body>
+</html>
