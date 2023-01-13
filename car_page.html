@@ -3,12 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;800&display=swap" rel="stylesheet">
 	<title></title>
 </head>
 <body>
 	<style type="text/css">
-		$max-img-width: 600px;
-		$max-img-height: 400px;
+		body {
+			font-family: Barlow, sans-serif;
+		}
 		.gallery img {
 			max-width: 100%;
 		    vertical-align: top;
@@ -18,7 +22,7 @@
 		    margin: 10px auto;
 		    max-width: 900px;
 		    position: relative;
-		    padding-top: 400px;
+		    padding-top: 680px;
 		    overflow: hidden;
 		    align-items: center;
 		    justify-content: center;
@@ -37,7 +41,6 @@
 		    opacity: 0;
 		    transition: opacity 0.3s ease-in-out;
 		    width: 100%;
-		    height: 400px;
 		}
 		.gallery__slider {
 			overflow: hidden;
@@ -53,10 +56,9 @@
 			left: 0px;
 		}
 		.gallery__item{
-			width: 25%;
+			width: 150px;
 		}
 		.gallery__thumb {
-		    padding-top: 6px;
 		    display: block;
 		}  
 		.gallery__thumb > img {
@@ -72,18 +74,39 @@
 		.gallery__selector:checked ~ .gallery__thumb img {
 	        filter: brightness(1);
 		}
-		 
+		.content {
+			width: 900px;
+			margin: auto;
+			display: flex;
+			padding: 20px 0px;
+		}
+		.content__text-block {
+			flex: 3;
+			padding: 0px 20px;
+		}
+		.content__text {
+			margin: 0px;
+		}
+		.content__info-block {
+			flex: 1;
+			position: relative;
+		}
+		.content__phone {
+			width: max-content;
+			margin: auto;
+			font-weight: 500;
+		}
 	</style>
 	<section class="gallery">
 	  <div class="gallery__image">
-	  	<img id="big-Image-1" class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt="" style="opacity: 1;" />
-	    <img id="big-Image-2" class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
-	    <img id="big-Image-3" class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
-	    <img id="big-Image-4" class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
-	    <img id="big-Image-5" class="gallery__img" src="https://picsum.photos/id/1015/600/400.jpg" alt=""/>
-	    <img id="big-Image-6" class="gallery__img" src="https://picsum.photos/id/1039/600/400.jpg" alt=""/>
-	    <img id="big-Image-7" class="gallery__img" src="https://picsum.photos/id/1057/600/400.jpg" alt=""/>
-	    <img id="big-Image-8" class="gallery__img" src="https://picsum.photos/id/106/600/400.jpg" alt=""/>
+	  	<img id="big-Image-1" class="gallery__img" src="./images/car_images/1.jpeg" alt="" style="opacity: 1;" />
+	    <img id="big-Image-2" class="gallery__img" src="./images/car_images/2.jpeg" alt=""/>
+	    <img id="big-Image-3" class="gallery__img" src="./images/car_images/3.jpeg" alt=""/>
+	    <img id="big-Image-4" class="gallery__img" src="./images/car_images/4.jpeg" alt=""/>
+	    <img id="big-Image-5" class="gallery__img" src="./images/car_images/5.jpeg" alt=""/>
+	    <img id="big-Image-6" class="gallery__img" src="./images/car_images/6.jpeg" alt=""/>
+	    <img id="big-Image-7" class="gallery__img" src="./images/car_images/7.jpeg" alt=""/>
+	    <img id="big-Image-8" class="gallery__img" src="./images/car_images/8.jpeg" alt=""/>
 	  </div>
 	  <div class="gallery__slider">
 	  	<button class="gallery__button" onclick="sliderMovement(1)"> < </button>
@@ -91,39 +114,54 @@
 	  	<div class="gallery__row" id="slider" style="left: 0px;">
 		  	<div class="gallery__item">
 		        <input type="radio" id="img-1" checked name="gallery" class="gallery__selector"/>
-		        <label for="img-1" class="gallery__thumb"><img id="thumb__img" src="https://picsum.photos/id/1015/150/100.jpg" alt="" style="width: 150px;" /></label>
+		        <label for="img-1" class="gallery__thumb"><img id="thumb__img" src="./images/car_images/1.jpeg" alt="" style="width: 150px;" /></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-2" name="gallery" class="gallery__selector"/>
-		        <label for="img-2" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+		        <label for="img-2" class="gallery__thumb"><img src="./images/car_images/2.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-3" name="gallery" class="gallery__selector"/>
-		        <label for="img-3" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+		        <label for="img-3" class="gallery__thumb"><img src="./images/car_images/3.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-4" name="gallery" class="gallery__selector"/>
-		        <label for="img-4" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+		        <label for="img-4" class="gallery__thumb"><img src="./images/car_images/4.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
-		        <input type="radio" id="img-5" checked name="gallery" class="gallery__selector"/>
-		        <label for="img-5" class="gallery__thumb"><img src="https://picsum.photos/id/1015/150/100.jpg" alt=""/></label>
+		        <input type="radio" id="img-5" name="gallery" class="gallery__selector"/>
+		        <label for="img-5" class="gallery__thumb"><img src="./images/car_images/5.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-6" name="gallery" class="gallery__selector"/>
-		        <label for="img-6" class="gallery__thumb"><img src="https://picsum.photos/id/1039/150/100.jpg" alt=""/></label>
+		        <label for="img-6" class="gallery__thumb"><img src="./images/car_images/6.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-7" name="gallery" class="gallery__selector"/>
-		        <label for="img-7" class="gallery__thumb"><img src="https://picsum.photos/id/1057/150/100.jpg" alt=""/></label>
+		        <label for="img-7" class="gallery__thumb"><img src="./images/car_images/7.jpeg" alt=""/></label>
 		    </div>
 		    <div class="gallery__item">
 		        <input type="radio" id="img-8" name="gallery" class="gallery__selector"/>
-		        <label for="img-8" class="gallery__thumb"><img src="https://picsum.photos/id/106/150/100.jpg" alt=""/></label>
+		        <label for="img-8" class="gallery__thumb"><img src="./images/car_images/8.jpeg" alt=""/></label>
 		    </div>
 		  </div>
 	  </div>
 	</section>
+	<div class="content">
+		<div class="content__text-block">
+			<p class="content__text">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper sapien quis enim dictum, sit amet sollicitudin risus laoreet. Praesent eu ligula arcu. In hendrerit diam sit amet mi elementum condimentum. Nam vel dolor eu sapien sollicitudin auctor a eget nisl. Mauris in tristique est. Cras porttitor consequat dui vitae venenatis. Pellentesque vitae justo in ipsum porttitor aliquam. Morbi vehicula ante sed aliquam blandit. Integer tempus ullamcorper metus id porta. Proin posuere tempor volutpat. Integer bibendum justo lorem, et euismod neque consectetur a. Donec et augue nulla. Quisque quis aliquet purus. Praesent ac nunc sagittis, congue orci nec, malesuada purus.
+
+Etiam mattis eros at dolor blandit tristique. Ut hendrerit laoreet ante et maximus. Cras sollicitudin risus vitae lectus bibendum venenatis. Aenean hendrerit bibendum purus, at bibendum arcu accumsan a. Duis bibendum ullamcorper risus sit amet facilisis. Morbi quis lacinia quam. Aenean erat sem, aliquet vitae tincidunt ac, rutrum id lorem. Nam vel tellus non orci laoreet laoreet. Donec viverra sapien neque, eget convallis risus faucibus eu. Phasellus a urna posuere nunc sagittis semper. Nullam lobortis nunc eu neque dapibus efficitur. Praesent eleifend varius augue at fringilla. Proin mattis leo ut metus placerat convallis.
+			</p>
+		</div>
+		<div class="content__info-block">
+			<div class="content__phone">
+				<a>+995591218056</a>
+			</div>
+			<div class=""></div>
+		</div>
+	</div>
 	<script>
 		let slider = document.getElementById("slider")
 		let slidersImageWidth = parseInt(document.getElementById("thumb__img").style.width)
