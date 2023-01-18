@@ -282,7 +282,7 @@
 			width: 100px;
 		}
 		.right-border{
-			border-right: 5px gray solid ;
+			border-right: 2px solid #4B4B4B;
 		}
 		.footer {
 			background-color: #20201F;
@@ -360,7 +360,7 @@
 		<h2 class="cars__title">Машины</h2>
 		<div class="cars__block">
 			<div class="cars__row">
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item1">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -376,7 +376,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item2">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -392,7 +392,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item3">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -410,7 +410,7 @@
 				</div>
 			</div>
 			<div class="cars__row">
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item4">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -426,7 +426,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item5">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -442,7 +442,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item">
+				<div class="cars__item" id="cars-item6">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -466,7 +466,7 @@
 			<h2>Преимущества</h2>
 		</div>
 		<div class="about__row">
-			<div class="about__item">
+			<div class="about__item" id="about-item1">
 				<div class="about__icon">
 					<img src="./images/icons/phone.png" alt="">
 				</div>
@@ -474,7 +474,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
 				</div>
 			</div>
-			<div class="about__item">
+			<div class="about__item" id="about-item2">
 				<div class="about__icon">
 					<img src="./images/icons/phone.png" alt="">
 				</div>
@@ -482,7 +482,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
 				</div>
 			</div>
-			<div class="about__item">
+			<div class="about__item" id="about-item3">
 				<div class="about__icon">
 					<img src="./images/icons/phone.png" alt="">
 				</div>
@@ -490,7 +490,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
 				</div>
 			</div>
-			<div class="about__item">
+			<div class="about__item" id="about-item4">
 				<div class="about__icon">
 					<img src="./images/icons/phone.png" alt="">
 				</div>
@@ -498,7 +498,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
 				</div>
 			</div>
-			<div class="about__item">
+			<div class="about__item" id="about-item5">
 				<div class="about__icon">
 					<img src="./images/icons/phone.png" alt="">
 				</div>
@@ -544,5 +544,35 @@
 			</li>
 		</ul>
 	</div>
+	<script>
+		let elementsAnimations = {
+			"cars-item1" : false,
+			"cars-item2" : false,
+			"cars-item3" : false,
+			"cars-item4" : false,
+			"cars-item5" : false,
+			"cars-item6" : false,
+			"about-item1" : false,
+			"about-item2" : false,
+			"about-item3" : false,
+			"about-item4" : false,
+			"about-item5" : false,
+		}
+		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+		function inUsersView(element){
+			let rect = element.getBoundingClientRect();
+			return rect.top >= 0 && rect.bottom <= viewportHeight
+		}
+
+		document.addEventListener( document.addEventListener("scroll", (event) => {
+			for( let key in elementsAnimations ){
+				if (elementsAnimations[key]){
+					continue
+				}
+				document.getElementById(key).style.animation = //start animation here
+			}
+		} )
+	</script>	
 </body>
 </html>
