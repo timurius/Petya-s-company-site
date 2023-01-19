@@ -186,6 +186,24 @@
 			width: 387px;
 			background-color: #eee;
 			box-sizing: border-box;
+			position: relative;
+			opacity: 0;
+			left: 0px;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+		.cars1 {
+			animation-delay: 0s;
+		}
+		.cars2 {
+			animation-delay: 1s;
+		}
+		.cars3 {
+			animation-delay: 2s;
+		}
+		@keyframes cars {
+  			from { left: -100%; opacity: 0; }
+  			to { left: 0px; opacity: 1; }
 		}
 		.cars__image {}
 		.cars__image img{
@@ -316,6 +334,8 @@
     		height: 35px;
     		object-fit: contain;
 		}
+		
+
 	</style>
 	<div class="header">
 		<div class="header__menu-container">
@@ -360,7 +380,7 @@
 		<h2 class="cars__title">Машины</h2>
 		<div class="cars__block">
 			<div class="cars__row">
-				<div class="cars__item" id="cars-item1">
+				<div class="cars__item cars1" id="cars-item1">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -376,7 +396,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item" id="cars-item2">
+				<div class="cars__item cars2" id="cars-item2">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -392,7 +412,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item" id="cars-item3">
+				<div class="cars__item cars3" id="cars-item3">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -410,7 +430,7 @@
 				</div>
 			</div>
 			<div class="cars__row">
-				<div class="cars__item" id="cars-item4">
+				<div class="cars__item cars1" id="cars-item4">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -426,7 +446,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item" id="cars-item5">
+				<div class="cars__item cars2" id="cars-item5">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -442,7 +462,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="cars__item" id="cars-item6">
+				<div class="cars__item cars3" id="cars-item6">
 					<a href="./car_page.html" class="cars__image">
 						<img src="https://newkit.moxcreative.com/becony/wp-content/uploads/sites/16/2022/08/car-wrapping-with-foil-drying-with-fan-car-service-e1660384470161.jpg" alt="">
 					</a>
@@ -546,17 +566,17 @@
 	</div>
 	<script>
 		let elementsAnimations = {
-			"cars-item1" : false,
-			"cars-item2" : false,
-			"cars-item3" : false,
-			"cars-item4" : false,
-			"cars-item5" : false,
-			"cars-item6" : false,
-			"about-item1" : false,
-			"about-item2" : false,
-			"about-item3" : false,
-			"about-item4" : false,
-			"about-item5" : false,
+			"cars-item1" : "cars",
+			"cars-item2" : "cars",
+			"cars-item3" : "cars",
+			"cars-item4" : "cars",
+			"cars-item5" : "cars",
+			"cars-item6" : "cars",
+			"about-item1" : "",
+			"about-item2" : "",
+			"about-item3" : "",
+			"about-item4" : "",
+			"about-item5" : "",
 		}
 		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -565,14 +585,19 @@
 			return rect.top >= 0 && rect.bottom <= viewportHeight
 		}
 
-		document.addEventListener( document.addEventListener("scroll", (event) => {
-			for( let key in elementsAnimations ){
-				if (elementsAnimations[key]){
+		document.addEventListener("scroll", (event) => {
+			 for( let key in elementsAnimations ){
+			 	let element = document.getElementById(key);
+			 	if ( inUsersView[ element ] == true ) {
+			 		document.getElementById(key).style.animationName = elementsAnimations[key];
+			 		console.log(element)
+			 		console.log(elementsAnimations[key])
+			 	}
+				else{
 					continue
 				}
-				document.getElementById(key).style.animation = //start animation here
 			}
-		} )
+		} );
 	</script>	
 </body>
 </html>
