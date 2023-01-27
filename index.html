@@ -128,6 +128,16 @@
 			line-height: 1em;
 			letter-spacing: -2px;
 			margin: 0px 0px 20px 0px;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			opacity: 0;
+			animation-name: title;
+			position: relative;
+			animation-delay: 0.5s;
+		}
+		@keyframes title {
+  			from { bottom: -100px; opacity: 0; }
+  			to { bottom: 0px; opacity: 1; }
 		}
 		.header__text {
 			font-size: 18px;
@@ -171,6 +181,10 @@
 			font-size: 48px;
 			font-weight: 800;
 			color: #20201F;
+			position: relative;
+			animation-duration: 2s;
+			animation-fill-mode: forwards;
+			opacity: 0;
 		}
 		.cars__block {
 			width: 70%;
@@ -192,15 +206,7 @@
 			animation-duration: 1s;
 			animation-fill-mode: forwards;
 		}
-		.cars1 {
-			animation-delay: 0s;
-		}
-		.cars2 {
-			animation-delay: 1s;
-		}
-		.cars3 {
-			animation-delay: 2s;
-		}
+		
 		@keyframes cars {
   			from { left: -100%; opacity: 0; }
   			to { left: 0px; opacity: 1; }
@@ -244,6 +250,10 @@
 		.about__title {
 			text-align: center;
 			margin-bottom: 50px;
+			position: relative;
+			opacity: 0;
+			animation-duration: 2s;
+			animation-fill-mode: forwards;
 		}
 		.about__row {
 			display: flex;
@@ -259,6 +269,14 @@
 			box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.08);
 			margin: 0px 20px;
 			box-sizing: border-box;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			opacity: 0;
+
+		}
+		@keyframes about {
+  			from { display: none; opacity: 0; }
+  			to { display: block; opacity: 1; }
 		}
 		.about__icon {
 			margin: auto;
@@ -370,14 +388,14 @@
 		</div>
 		<div class="header__text-block-container">
 			<div class="header__text-block">
-				<h1 class="header__title">Protect Your Investment</h1>
+				<h1 class="header__title" id="title">Protect Your Investment</h1>
 				<p class="header__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>			
 				<button class="header__button">get a quote</button>
 			</div>
 		</div>
 	</div>	
 	<div class="cars">
-		<h2 class="cars__title">Машины</h2>
+		<h2 class="cars__title" id="cars-title">Машины</h2>
 		<div class="cars__block">
 			<div class="cars__row">
 				<div class="cars__item cars1" id="cars-item1">
@@ -482,7 +500,7 @@
 		</div>
 	</div>
 	<div class="about">
-		<div class="about__title">
+		<div class="about__title" id="about-title">
 			<h2>Преимущества</h2>
 		</div>
 		<div class="about__row">
@@ -566,17 +584,19 @@
 	</div>
 	<script>
 		let elementsAnimations = {
-			"cars-item1" : "cars",
-			"cars-item2" : "cars",
-			"cars-item3" : "cars",
-			"cars-item4" : "cars",
-			"cars-item5" : "cars",
-			"cars-item6" : "cars",
-			"about-item1" : "",
-			"about-item2" : "",
-			"about-item3" : "",
-			"about-item4" : "",
-			"about-item5" : "",
+			"cars-item1" : ["cars", 0],
+			"cars-item2" : ["cars", 400],
+			"cars-item3" : ["cars", 800],
+			"cars-item4" : ["cars", 0],
+			"cars-item5" : ["cars", 400],
+			"cars-item6" : ["cars", 800],
+			"about-item1" : ["about", 100], 
+			"about-item2" : ["about", 200],
+			"about-item3" : ["about", 300],
+			"about-item4" : ["about", 400],
+			"about-item5" : ["about", 500],
+			"cars-title" : ["title", 0],
+			"about-title" : ["title", 0],
 		}
 		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -584,19 +604,22 @@
 			let rect = element.getBoundingClientRect();
 			return rect.top >= 0 && rect.bottom <= viewportHeight
 		}
-
+		let animIsInProcess = false;
 		document.addEventListener("scroll", (event) => {
+			if( animIsInProcess ){
+				return
+			}
+			animIsInProcess = true;
 			 for( let key in elementsAnimations ){
 			 	let element = document.getElementById(key);
-			 	if ( inUsersView[ element ] == true ) {
-			 		document.getElementById(key).style.animationName = elementsAnimations[key];
-			 		console.log(element)
-			 		console.log(elementsAnimations[key])
+			 	if ( inUsersView( element ) ) {
+			 		setTimeout( () => document.getElementById( key ).style.animationName = elementsAnimations[ key ][0], elementsAnimations[ key ][1]);
 			 	}
 				else{
 					continue
 				}
 			}
+			animIsInProcess = false;
 		} );
 	</script>	
 </body>
