@@ -292,12 +292,22 @@
 			align-items: center;
 			margin: auto;
 			height: 300px;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			opacity: 0;
+			animation-timing-function: ease-out;
+			position: relative;
 		}
 		.documents__block {
 			width: 50%;
 			height: auto;
 			text-align: center;
 			box-sizing: content-box;
+			
+		}
+		@keyframes documents {
+  			from { top: -100px; opacity: 0; }
+  			to { top: 0px; opacity: 1; }
 		}
 		.documents__title h2{
 			margin: 0px;
@@ -351,6 +361,21 @@
 			width: 100%;
     		height: 35px;
     		object-fit: contain;
+		}
+		@media (max-width: 900px){
+			.cars__row {
+				display: grid;
+				align-items: center;
+				justify-content: center;
+
+			}
+			.cars__block {
+				width: 100%;
+			}
+			.cars__item {
+				width: 80%;
+				margin: auto;
+			}
 		}
 		
 
@@ -546,7 +571,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="documents">
+	<div class="documents" id="documents">
 		<div class="documents__block right-border">
 			<div class="documents__title">
 				<h2>Условия</h2>
@@ -585,11 +610,11 @@
 	<script>
 		let elementsAnimations = {
 			"cars-item1" : ["cars", 0],
-			"cars-item2" : ["cars", 400],
-			"cars-item3" : ["cars", 800],
+			"cars-item2" : ["cars", 0],
+			"cars-item3" : ["cars", 0],
 			"cars-item4" : ["cars", 0],
-			"cars-item5" : ["cars", 400],
-			"cars-item6" : ["cars", 800],
+			"cars-item5" : ["cars", 0],
+			"cars-item6" : ["cars", 0],
 			"about-item1" : ["about", 100], 
 			"about-item2" : ["about", 200],
 			"about-item3" : ["about", 300],
@@ -597,30 +622,63 @@
 			"about-item5" : ["about", 500],
 			"cars-title" : ["title", 0],
 			"about-title" : ["title", 0],
+			"documents" : ["documents", 0]
 		}
 		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-		function inUsersView(element){
-			let rect = element.getBoundingClientRect();
-			return rect.top >= 0 && rect.bottom <= viewportHeight
-		}
-		let animIsInProcess = false;
-		document.addEventListener("scroll", (event) => {
-			if( animIsInProcess ){
-				return
-			}
-			animIsInProcess = true;
-			 for( let key in elementsAnimations ){
-			 	let element = document.getElementById(key);
-			 	if ( inUsersView( element ) ) {
-			 		setTimeout( () => document.getElementById( key ).style.animationName = elementsAnimations[ key ][0], elementsAnimations[ key ][1]);
-			 	}
-				else{
-					continue
+		function changingElementsAnimations(){
+			if ( document.documentElement.clientWidth <= 900  ) {
+				for (let i = 1; i <= 7; i++) {
+					elementsAnimations["cars-item" + 1][1] = 0
 				}
 			}
-			animIsInProcess = false;
-		} );
-	</script>	
+			else {
+				elementsAnimations = {
+					"cars-item1" : ["cars", 0],
+					"cars-item2" : ["cars", 400],
+					"cars-item3" : ["cars", 800],
+					"cars-item4" : ["cars", 0],
+					"cars-item5" : ["cars", 400],
+					"cars-item6" : ["cars", 800],
+					"about-item1" : ["about", 100], 
+					"about-item2" : ["about", 200],
+					"about-item3" : ["about", 300],
+					"about-item4" : ["about", 400],
+					"about-item5" : ["about", 500],
+					"cars-title" : ["title", 0],
+					"about-title" : ["title", 0],
+					"documents" : ["documents", 0]
+				}
+			}
+		}
+		function makePlayingAnimations() {
+			let animIsInProcess = false;
+			return function() {
+				if( animIsInProcess ){
+					return
+				}
+				this.animIsInProcess = true;
+				 for( let key in elementsAnimations ){
+				 	let element = document.getElementById(key);
+				 	if ( inUsersView( element ) ) {
+				 		setTimeout( () => document.getElementById( key ).style.animationName = elementsAnimations[ key ][0], elementsAnimations[ key ][1]);
+				 	}
+					else{
+						continue
+					}
+				}
+				animIsInProcess = false;
+			};
+			
+		}
+		changingElementsAnimations()
+		function inUsersView(element){
+			let rect = element.getBoundingClientRect();
+			return rect.top >= 0 && rect.bottom - element.clientHeight <= viewportHeight;
+		}
+		let playingAnimations = makePlayingAnimations();
+		window.addEventListener("resize", changingElementsAnimations );
+		document.addEventListener("scroll", playingAnimations );
+	</script>	 
 </body>
 </html>
