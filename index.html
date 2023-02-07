@@ -131,7 +131,6 @@
 			animation-duration: 1s;
 			animation-fill-mode: forwards;
 			opacity: 0;
-			animation-name: title;
 			position: relative;
 			animation-delay: 0.5s;
 		}
@@ -365,8 +364,6 @@
 		@media (max-width: 900px){
 			.cars__row {
 				display: grid;
-				align-items: center;
-				justify-content: center;
 
 			}
 			.cars__block {
@@ -374,7 +371,7 @@
 			}
 			.cars__item {
 				width: 80%;
-				margin: auto;
+				margin: 20px auto ;
 			}
 		}
 		
@@ -609,6 +606,7 @@
 	</div>
 	<script>
 		let elementsAnimations = {
+			"title" : ["title", 0],
 			"cars-item1" : ["cars", 0],
 			"cars-item2" : ["cars", 0],
 			"cars-item3" : ["cars", 0],
@@ -634,6 +632,7 @@
 			}
 			else {
 				elementsAnimations = {
+					"title" : ["title", 0],
 					"cars-item1" : ["cars", 0],
 					"cars-item2" : ["cars", 400],
 					"cars-item3" : ["cars", 800],
@@ -677,6 +676,7 @@
 			return rect.top >= 0 && rect.bottom - element.clientHeight <= viewportHeight;
 		}
 		let playingAnimations = makePlayingAnimations();
+		playingAnimations()
 		window.addEventListener("resize", changingElementsAnimations );
 		document.addEventListener("scroll", playingAnimations );
 	</script>	 
