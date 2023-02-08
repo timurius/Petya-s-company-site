@@ -256,8 +256,13 @@
 		}
 		.about__row {
 			display: flex;
-			width: 90%;
+			width: 75%;
 			margin: auto;
+		}
+		.about__items-container {
+			display: flex;
+			position: relative;
+			width: 50%;
 		}
 		.about__item {
 			padding: 40px 20px;
@@ -299,10 +304,19 @@
 		}
 		.documents__block {
 			width: 50%;
-			height: auto;
+			height: 70px;
 			text-align: center;
 			box-sizing: content-box;
-			
+			display: flex;
+		}
+		.documents__block:nth-child(1){
+			flex-direction: column;
+			align-items: center;
+			border-right: 2px solid #4B4B4B;
+		}
+		.documents__block:nth-child(2){
+			border-left: 2px solid #4B4B4B;
+			justify-content: center;
 		}
 		@keyframes documents {
   			from { top: -100px; opacity: 0; }
@@ -320,34 +334,47 @@
 			display: block;
 			width: min-content;
 		}
-		.documents__icon {margin-right: 30px}
+		.documents__icon {display: inline-block; margin-right: 10px;}
 		.documents__content {
 			display: inline-block;
 			text-align: left;
 			width: 100px;
 		}
 		.right-border{
-			border-right: 2px solid #4B4B4B;
+			
 		}
 		.footer {
 			background-color: #20201F;
-			padding: 10px 0px;
 		}
 		.footer__body {
 			list-style: none;
 			display: flex;
 			width: 70%;
 			margin: auto;
-			justify-content: center;
+			justify-content: space-around;
 			align-items: center;
 			height: 100px;
+			box-sizing: border-box;
+			padding: 0px;
 		}
 		.footer__item {
-			padding: 0px 50px;
-			border-right: 5px #EFEFEF solid;
+			padding: 0px 5%;
 			height: 40px;
 			display: inline-flex;
 			align-items: center;
+			justify-content: center;
+			flex: 1;
+			box-sizing: border-box;
+		}
+		.footer__item:nth-child(2) {
+			border-right: 2.5px #EFEFEF solid;
+			border-left: 2.5px #EFEFEF solid;
+		}
+		.footer__item:nth-child(1) {
+			border-right: 2.5px #EFEFEF solid;
+		}
+		.footer__item:nth-child(3) {
+			border-left: 2.5px #EFEFEF solid;
 		}
 		.footer__item a{
 			margin: 0px;
@@ -357,13 +384,33 @@
 			font-weight: 500;
 		}
 		.footer__logo{
-			width: 100%;
+			width: 115px;
     		height: 35px;
-    		object-fit: contain;
 		}
-		@media (max-width: 900px){
+		@media (max-width: 1400px){
+			.footer__item {
+				padding: 0px 2%;
+			}
+			.about__row {
+				flex-direction: column;
+			}
+			.about__items-container{
+				width: 100%;
+			}
+			.about__item {
+				margin: 5px;
+				padding: 0px inherit;
+			}
+		}
+		@media (max-width: 800px){
+			.footer__item {
+				padding: 0px 2px;
+			}
+			.footer__item a{
+				font-size: 16px;
+			}
 			.cars__row {
-				display: grid;
+				flex-direction: column;
 
 			}
 			.cars__block {
@@ -373,9 +420,41 @@
 				width: 80%;
 				margin: 20px auto ;
 			}
+			.about__items-container {
+				flex-direction: column;
+				margin: 0px;
+			}
+			.about__item {
+				width: 100%;
+			}
+			.documents {
+				width: 100%;
+			}
+			.footer__logo{
+				width: 76.6px;
+				height: 23.3px;
+			}
+			.footer__body {
+				width: 100%;
+			}
 		}
-		
-
+		@media(max-width: 500px){
+			.footer__item a{
+				font-size: 13px;
+			}
+			.about__row {
+				width: 100%;
+			}
+			.header__title {
+				font-size: 60px;
+			}
+			.header{
+				height: 660px;
+			}
+			.documents__icon {
+				display: none;
+			}
+		}
 	</style>
 	<div class="header">
 		<div class="header__menu-container">
@@ -526,44 +605,40 @@
 			<h2>Преимущества</h2>
 		</div>
 		<div class="about__row">
-			<div class="about__item" id="about-item1">
-				<div class="about__icon">
-					<img src="./images/icons/phone.png" alt="">
+			<div class="about__items-container">
+				<div class="about__item" id="about-item1">
+					<div class="about__icon">
+						<img src="./images/icons/phone.png" alt="">
+					</div>
+					<div class="about__text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+					</div>
 				</div>
-				<div class="about__text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-				</div>
-			</div>
-			<div class="about__item" id="about-item2">
-				<div class="about__icon">
-					<img src="./images/icons/phone.png" alt="">
-				</div>
-				<div class="about__text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-				</div>
-			</div>
-			<div class="about__item" id="about-item3">
-				<div class="about__icon">
-					<img src="./images/icons/phone.png" alt="">
-				</div>
-				<div class="about__text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+				<div class="about__item" id="about-item2">
+					<div class="about__icon">
+						<img src="./images/icons/phone.png" alt="">
+					</div>
+					<div class="about__text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+					</div>
 				</div>
 			</div>
-			<div class="about__item" id="about-item4">
-				<div class="about__icon">
-					<img src="./images/icons/phone.png" alt="">
+			<div class="about__items-container">
+				<div class="about__item" id="about-item3">
+					<div class="about__icon">
+						<img src="./images/icons/phone.png" alt="">
+					</div>
+					<div class="about__text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+					</div>
 				</div>
-				<div class="about__text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-				</div>
-			</div>
-			<div class="about__item" id="about-item5">
-				<div class="about__icon">
-					<img src="./images/icons/phone.png" alt="">
-				</div>
-				<div class="about__text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+				<div class="about__item" id="about-item4">
+					<div class="about__icon">
+						<img src="./images/icons/phone.png" alt="">
+					</div>
+					<div class="about__text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -573,11 +648,11 @@
 			<div class="documents__title">
 				<h2>Условия</h2>
 			</div>
-			<a class="documents__dowloand-button" style="margin: auto;">
+			<a class="documents__dowloand-button">
 				Смотреть
 			</a>
 		</div>
-		<div class="documents__block" style="display: flex; align-items: center; justify-content: center;">
+		<div class="documents__block">
 			<div class="documents__icon">
 				<img src="./images/icons/file.png" alt="" class="">
 			</div>
@@ -598,7 +673,7 @@
 				<img src="" alt="" class="footer__icon">
 				<a class="" href="mailto:timur.yagudin.08@gmail.com&cc=mail@htmlacademy.ru?body=Привет, подпишитесь на рассылку">example@gmail.com</a>
 			</li>
-			<li class="footer__item" style="border: none;">
+			<li class="footer__item">
 				<img src="" alt="" class="footer__icon">
 				<a href="tel:+995591218056">+995 591 218 056</a>
 			</li>
@@ -617,13 +692,16 @@
 			"about-item2" : ["about", 200],
 			"about-item3" : ["about", 300],
 			"about-item4" : ["about", 400],
-			"about-item5" : ["about", 500],
 			"cars-title" : ["title", 0],
 			"about-title" : ["title", 0],
 			"documents" : ["documents", 0]
 		}
 		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+		function inUsersView(element){
+			let rect = element.getBoundingClientRect();
+			return rect.top >= 0 && rect.bottom <= viewportHeight ;
+		}
 		function changingElementsAnimations(){
 			if ( document.documentElement.clientWidth <= 900  ) {
 				for (let i = 1; i <= 7; i++) {
@@ -643,7 +721,6 @@
 					"about-item2" : ["about", 200],
 					"about-item3" : ["about", 300],
 					"about-item4" : ["about", 400],
-					"about-item5" : ["about", 500],
 					"cars-title" : ["title", 0],
 					"about-title" : ["title", 0],
 					"documents" : ["documents", 0]
@@ -671,10 +748,6 @@
 			
 		}
 		changingElementsAnimations()
-		function inUsersView(element){
-			let rect = element.getBoundingClientRect();
-			return rect.top >= 0 && rect.bottom - element.clientHeight <= viewportHeight;
-		}
 		let playingAnimations = makePlayingAnimations();
 		playingAnimations()
 		window.addEventListener("resize", changingElementsAnimations );
