@@ -63,14 +63,12 @@
 		}
 		.header__link {
 			margin: 4%;
-		}
-		.header__link a {
 			color: white;
 			text-decoration: none;
 			font-weight: 600;
-			transition: color, 0.3s ;
+			transition: all, 0.3s ;
 		}
-		.header__link a:hover {
+		.header__link:hover {
 			color: #FDC411;
 		}
 		.header__contact-container {
@@ -358,7 +356,6 @@
 			padding: 0px;
 		}
 		.footer__item {
-			padding: 0px 5%;
 			height: 40px;
 			display: inline-flex;
 			align-items: center;
@@ -388,9 +385,6 @@
     		height: 35px;
 		}
 		@media (max-width: 1400px){
-			.footer__item {
-				padding: 0px 2%;
-			}
 			.about__row {
 				flex-direction: column;
 			}
@@ -402,10 +396,30 @@
 				padding: 0px inherit;
 			}
 		}
-		@media (max-width: 800px){
-			.footer__item {
-				padding: 0px 2px;
+		@media(max-width: 1060px){
+			.header__links{
+				position: absolute;
+				flex-direction: column;
+				width: 100%;
+				left: 0px;
+				top: 100%;
+				flex-wrap: nowrap;
+				background-color: #fff;
+				z-index: 5;
 			}
+			.header__link{
+				margin: 0px;
+				color: #000;
+				width: 100%;
+				text-align: center;
+				padding: 20px 0px;
+			}
+			.header__link:hover {
+				background-color: #4b4b4b;
+			}
+
+		}
+		@media (max-width: 800px){
 			.footer__item a{
 				font-size: 16px;
 			}
@@ -463,13 +477,11 @@
 					<img src="./images/header_logo.png" alt="" class="">
 				</div>
 				<div class="header__links">
-					<div class="header__link"><a href="" class="">Home</a></div>
-					<div class="header__link"><a href="" class="">About Us</a></div>
-					<div class="header__link">
-						<a href="" class="">Services</a>
-					</div>
-					<div class="header__link"><a href="" class="">Contact Us</a></div>
-					<div class="header__link"><a href="" class="">Pages</a></div>
+					<a class="header__link" href="" class="">Home</a>
+					<a class="header__link" href="" class="">About Us</a>
+					<a class="header__link" href="" class="">Services</a>
+					<a class="header__link" href="" class="">Contact Us</a>
+					<a class="header__link" href="" class="">Pages</a>
 				</div>
 				<div class="header__language-switcher">
 					
