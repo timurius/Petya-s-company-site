@@ -55,6 +55,17 @@
     		height: 40px;
     		object-fit: contain;
 		}
+		.header__burger-button-container {
+			display: none;
+		}
+		.header__burger-button {
+			text-align: center;
+
+		}
+		.header__burger-image {
+			width: 100%;
+			vertical-align: middle;;
+		}
 		.header__links {
 			display: flex;
 			width: 49%;
@@ -80,7 +91,6 @@
 			display: flex;
 			align-items: center;
 			text-decoration: none;
-			position: relative;
 			right: 0px;
 		}
 		.header__icon-container {
@@ -324,13 +334,23 @@
 			margin: 0px;
 		}
 		.documents__dowloand-button{
-			background-color: #eee;
-			font-weight: 500;
-			padding: 10px 14px;
 			cursor: pointer;
 			position: relative;
 			display: block;
 			width: min-content;
+			font-size: 11px;
+		    font-weight: 600;
+		    text-transform: uppercase;
+		    letter-spacing: 3px;
+		    background-color: #fdc411;
+		    border: none;
+		    padding: 15px 15px;
+		    color: #20201f;
+		    transition: all, 0.3s;
+		}
+		.documents__dowloand-button:hover {
+			background-color: #4b4b4b;
+			color: white;
 		}
 		.documents__icon {display: inline-block; margin-right: 10px;}
 		.documents__content {
@@ -397,6 +417,27 @@
 			}
 		}
 		@media(max-width: 1060px){
+			.header__image {
+				flex: 1;
+				margin: 0px;
+			}
+			.header__burger-button-container {
+				display: block;
+				position: relative;
+				text-align: center;
+				flex: 3;
+			}
+			.header__burger-button {
+				position: relative;
+				background-color: #fdc411;
+				border: none;
+				width: 42px;
+				height: 42px;
+
+			}
+			.header__burger-image {
+				
+			}
 			.header__links{
 				position: absolute;
 				flex-direction: column;
@@ -417,9 +458,15 @@
 			.header__link:hover {
 				background-color: #4b4b4b;
 			}
+			.header__contact-container {
+				flex: 1;
+			}
 
 		}
 		@media (max-width: 800px){
+			.header__contact-text {
+				display: none;
+			}
 			.footer__item a{
 				font-size: 16px;
 			}
@@ -476,7 +523,12 @@
 				<div class="header__image">
 					<img src="./images/header_logo.png" alt="" class="">
 				</div>
-				<div class="header__links">
+				<div class="header__burger-button-container">
+					<button class="header__burger-button" onclick="toggleBurgerMenu()">
+						<img src="./images/icons/burger-button.png" alt="" class="header__burger-image">
+					</button>
+				</div>
+				<div class="header__links" id="menu" style="display: none;">
 					<a class="header__link" href="" class="">Home</a>
 					<a class="header__link" href="" class="">About Us</a>
 					<a class="header__link" href="" class="">Services</a>
@@ -708,9 +760,10 @@
 			"about-title" : ["title", 0],
 			"documents" : ["documents", 0]
 		}
-		const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-		const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+		let burgerMenuStyle = document.getElementById("menu").style;
 		function inUsersView(element){
+			let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+			let viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 			let rect = element.getBoundingClientRect();
 			return rect.top >= 0 && rect.bottom <= viewportHeight ;
 		}
@@ -758,6 +811,11 @@
 				animIsInProcess = false;
 			};
 			
+		}
+		function toggleBurgerMenu() {
+			console.log("hello");
+			if ( burgerMenuStyle.display == "none" ) { burgerMenuStyle.display = "flex" }
+			else{ burgerMenuStyle.display = "none" }
 		}
 		changingElementsAnimations()
 		let playingAnimations = makePlayingAnimations();
